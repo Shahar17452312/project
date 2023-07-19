@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Cake Shop</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="topBar">
+        <a class="navbar-brand shopname" href="/">
+          <canvas id="myCanvas" width="250" height="75" style="border:none">
+            Your browser does not support the HTML canvas tag.
+            </canvas>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <form action="/" method="get">
+                <button class="nav-link btn btn-outline-secondary" style="border: none;" href="#">בית</button>
+              </form>
+            </li>
+            <li class="nav-item dropdown" id="myDropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">תפריט</a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="#">Cakes &raquo;</a>
+                  <ul class="submenu dropdown-menu">
+                    <li><a class="dropdown-item" href="#" id="dairyCakes">Dairy</a></li>
+                    <li><a class="dropdown-item" href="#" id="nonDairyCakes">Non-Dairy</a></li>
+                    <li><a class="dropdown-item" href="#" id="allCakes">All Cakes</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Cookies &raquo;</a>
+                  <ul class="submenu dropdown-menu">
+                    <li><a class="dropdown-item" href="#" id="dairyCookies">Dairy</a></li>
+                    <li><a class="dropdown-item" href="#" id="nonDairyCookies">Non-Dairy</a></li>
+                    <li><a class="dropdown-item" href="#" id="allCookies">All Cookies</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#">Desserts &raquo;</a>
+                  <ul class="submenu dropdown-menu">
+                    <li><a class="dropdown-item" href="#" id="dairyDesserts">Dairy</a></li>
+                    <li><a class="dropdown-item" href="#" id="nonDairyDesserts">Non-Dairy</a></li>
+                    <li><a class="dropdown-item" href="#" id="allDesserts">All Desserts</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <% if(user){ %>
+              <li class="nav-item">
+                <button id="showOrdersBtn" class="nav-link btn btn-outline-secondary" style="border: none;" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
+                  ההזמנות שלי
+              </button>
+            </li>
+            <%}%>
+            <% if(!user){ %>
+              <li class="nav-item">
+                <a id="loginBtn" class="nav-link btn btn-outline-secondary" style="border: none;" href="./logIn.html">התחבר <i class="bi bi-person"></i></a>
+              </li>
+            <%}%>
+              <% if(user){ %>
+                <li class="nav-item">
+                  <form action="/logout" method="get">
+                    <button id="logoutBtn" class="nav-link btn btn-outline-secondary" style="border: none;">התנתק <i class="bi bi-person"></i></button>
+                  </form>
+                </li>
+              <%}%>
+
+            
+            <li class="nav-item">
+              <a class="nav-link btn btn-outline-secondary" style="border: none;" href="./contact.html">אודות<i class="bi bi-info-lg"></i></a>
+            </li>
+       
+            <% if(!user){ %>
+              <li class="nav-item" >
+                  <a class="nav-link btn btn-outline-secondary" style="border: none;" href="./register.html">הרשם</a>
+              </li>
+            <%}%>
+       
+            <li class="nav-item">
+              <button class="nav-link btn btn-outline-secondary" style="border: none;" href="#"><i class="bi bi-facebook icon facebook"></i></button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link btn btn-outline-secondary" style="border: none;" href="#"><i class="bi bi-instagram icon instagram"></i></button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <header class="jumbotron jumbotron-fluid">
+        <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner header-slide">
+            <div class="carousel-item active" data-interval="5000">
+                <section class="first-slide text-center">
+                  <h1>! ברוך הבא 
+                    <% if(user){ %>   <%= user.name %>              <%}%>
+                  
+                  </h1>
+                  <br>
+                  <h4>אנחנו שמחים שבחרת בנו ומבטיחים לספק את השירות הטוב ביותר </h4> 
+                  <h4>לכבוד הפתיחה של האתר אנחנו מציעים לך מגוון עוגות רק ב-99 ש"ח</h4> 
+                  <h6>בתוקף עד ה-23\07\30 או עד גמר המלאי</h6>   
+                </section>
+              
+            </div>
+            <div class="carousel-item" data-interval="5000">
+              <div class="row align-items-center">
+                <div class="col-8 slide-img" style="background-image: url(images/s1.jpg);"></div>
+                
+              </div>
+            </div>
+            <div class="carousel-item" data-interval="10000">
+              <div class="row align-items-center">
+                <div class="col-8 slide-img" style="background-image: url(images/s2.jpg);"></div>
+                
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row align-items-center">
+                <div class="col-8 slide-img" style="background-image: url(images/s3.jpg);"></div>
+                
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row align-items-center">
+                <div class="col-8 slide-img" style="background-image: url(images/s4.jpg);"></div>
+                
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row align-items-center">
+                <div class="col-8 slide-img" style="background-image: url(images/s5.jpg);"></div>
+                
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row align-items-center">
+                <div class="col-8 slide-img" style="background-image: url(images/s6.jpg);"></div>
+               
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row align-items-center">
+                <div class="col-8 slide-img" style="background-image: url(images/s7.jpg);"></div>
+               
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="row">
+                <div class="col-8 slide-img" style="background-image: url(images/s8.jpg);"></div>
+                
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+      </header>
+      <div class="container mt-5">
+        <div class="row">
+          <ul id="cakeContainer"></ul>
+        </div>
+    </div>
+
+    <dialog id="favDialog">
+      
+        <div class="card " id="dialogCard">
+
+            <div class="card-img text-center dia"><img id="dialogImg" src=""></div>
+            <div class="card-info">
+              <p class="text-title" id="dialog_id" name="productId"></p>
+              <% if(user){ %>
+              <p class="text-title" id="userId" name="userId" style="display: none;"><%= user._id %></p>
+              <%}%>
+              <p class="text-title" id="dialogName"></p>
+              <p class="text-body" id="dialogDescription"></p>
+              <h4 class="text-center"><b id="dialogPrice"></b></h4><br>
+              <input class="input" type="text" placeholder="הערות">
+            </div>
+            <div class="card-footer dialogfot">
+              <div class="card-button minus"><i class="bi bi-dash-lg miusicon"></i></div>
+              <span class="text-title ft numOfProd" name="quantity">1</span>
+              <div class="card-button ft plus"><i class="bi bi-plus-lg plusicon"></i></div>
+            </div>
+            <br><br>
+            <% if(user){ %>
+            <button class="btn btn-secondary btn-left addToCart">הוסף לעגלת קניות</button>
+            <%}%>
+            <% if(!user){ %>
+              <a class="btn btn-secondary btn-left" href="./logIn.html">התחבר כדי לקנות</a>
+            <%}%>
+        </div>  
+    </dialog>
+
+
+    <div class="offcanvas offcanvas-start bg-dark" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title side" id="offcanvasExampleLabel">היסטוריית הזמנות</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+          <div class="accordion colo" id="myorder">
+          </div>
+      </div>
+    </div>
+
+    <div id="specialCakeModal" class="modal fade">
+      <div class="modal-dialog" style="text-align: center; align-items: center;">
+        <div class="modal-content special" id="special">
+          <div class="modal-body">
+            <img id="specialCakeImage" src="" alt="Special Cake">
+            <h1 id="specialCakeMessage"></h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+    
+    <div class="modal" id="cartModal" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <!-- Modal content goes here -->
+          <div class="modal-header">
+            <h5 class="modal-title">עגלת קניות</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <% if(user){ %>
+           <div id="id_cart" style="display: none;"> <%= user._id %> </div>
+          <%}%>
+          <div class="inputGroup" style="display: none;">
+            <label for="name">Enter new quantitny</label>
+            <input id="newnum" type="text" placeholder="Quantitny" >
+            <button id="newquntity">Submit</button>
+          </div>
+          <div class="modal-body">
+            <!-- Cart items and details go here -->
+          </div>
+          <div class="modal-footer d-flex justify-content-between align-items-center">
+            <div class="flex-grow-0">
+              <button class="btn btn-danger clear-cart-btn">נקה עגלה</button>
+            </div>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">סגור</button>
+            <button disabled="" type="button" id="checkoutBtn" class="btn btn-success" data-bs-dismiss="modal">הזמן עכשיו</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    
+
+    <% if(user){ %>
+      <button type="button" id="cartBtn" class="btn btn-primary "><i id="icon-cart" class="bi bi-cart4" ></i> 
+        <span id="cart" class="position-absolute top-0 start-0 translate-middle badge rounded-pill bg-danger">
+          <% if(!user){ %>
+            0
+          <%}%>
+          <% if(user){ %>
+            <%= user.cart.length %>
+          <%}%>
+        </span>
+      </button>
+      <%}%>
+    <footer class="bg-dark text-white text-center py-3">
+        <p id="fott">&copy; 2023 Cake Shop. All rights reserved.</p>
+    </footer>
+
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./index.js"></script>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Register</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link rel="stylesheet" href="reg.css">
+</head>
+<body>
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="topBar">
+    <a class="navbar-brand shopname" href="/">
+      <canvas id="myCanvas" width="250" height="75" style="border:none">
+        Your browser does not support the HTML canvas tag.
+        </canvas>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <form action="/" method="get">
+            <button class="nav-link btn btn-outline-secondary" style="border: none;" href="#">בית</button>
+          </form>
+        </li>
+        
+          <li class="nav-item">
+            <a id="loginBtn" class="nav-link btn btn-outline-secondary" style="border: none;" href="./logIn.html">התחבר <i class="bi bi-person"></i></a>
+          </li>
+        
+        <li class="nav-item">
+          <a class="nav-link btn btn-outline-secondary" style="border: none;" href="./contact.html">אודות<i class="bi bi-info-lg"></i></a>
+        </li>
+    
+        <li class="nav-item">
+          <button class="nav-link btn btn-outline-secondary" style="border: none;" href="#"><i class="bi bi-facebook icon facebook"></i></button>
+        </li>
+        <li class="nav-item">
+          <button class="nav-link btn btn-outline-secondary" style="border: none;" href="#"><i class="bi bi-instagram icon instagram"></i></button>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+    <form class="form" action="/register" method="post">
+        <p class="title">Register </p>
+        <label>
+            <input name="name" required="" placeholder="" type="text" class="input">
+            <span>Full-name</span>
+        </label> 
+                
+        <label>
+            <input name="email" required="" placeholder="" type="email" class="input">
+            <span>Email</span>
+        </label> 
+            
+        <label>
+            <input name="address" required="" placeholder="" type="text" class="input">
+            <span>Address</span>
+        </label>
+        <label>
+            <input name="password" required="" placeholder="" type="password" class="input">
+            <span>Password</span>
+        </label>
+        <br>
+        <button class="submit">Submit</button>
+        <p class="p">?כבר יש לך חשבון <a href="./logIn.html">להתחברות</a> </p>
+    </form>
+
+    <footer class="bg-dark text-white text-center py-3">
+      <p id="fott">&copy; 2023 Cake Shop. All rights reserved.</p>
+      </footer>
+    <script>
+      var c = document.getElementById("myCanvas");
+ var ctx = c.getContext("2d");
+
+ // Create gradient
+ var grd = ctx.createLinearGradient(0, 0, 300, 0);
+ grd.addColorStop(0, "white");
+ grd.addColorStop(1, "black");
+
+ // Fill with gradient
+ ctx.fillStyle = grd;
+ ctx.fillRect(0, 10, 600, 80);
+
+ // Add text on red color
+ ctx.fillStyle = "black";
+ ctx.font = "40px 'Brush Script MT', cursive";
+ ctx.fillText("Rachely Sweets", 20, 50);
+   </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact Us</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <link rel="stylesheet" href="./contact.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark" id="topBar">
+        <a class="navbar-brand shopname" href="/">
+          <canvas id="myCanvas" width="250" height="75" style="border:none">
+            Your browser does not support the HTML canvas tag.
+            </canvas>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <form action="/" method="get">
+                <button class="nav-link btn btn-outline-secondary" style="border: none;" href="#">בית</button>
+              </form>
+            </li>
+                   
+            <li class="nav-item">
+              <a class="nav-link btn btn-outline-secondary" style="border: none;" href="./contact.html">אודות<i class="bi bi-info-lg"></i></a>
+            </li>
+       
+              <li class="nav-item" >
+                  <a class="nav-link btn btn-outline-secondary" style="border: none;" href="./register.html">הרשם</a>
+              </li>
+       
+            <li class="nav-item">
+              <button class="nav-link btn btn-outline-secondary" style="border: none;" href="#"><i class="bi bi-facebook icon facebook"></i></button>
+            </li>
+            <li class="nav-item">
+              <button class="nav-link btn btn-outline-secondary" style="border: none;" href="#"><i class="bi bi-instagram icon instagram"></i></button>
+            </li>
+          </ul>
+        </div>
+      </nav>
+  <br><br>
+  <header>
+    <p style="font-size:40px"> &#128075;המתוקים של רחלי  </p>
+    <p>
+         היי אני רחלי קונדטורית צעירה מהרי ירושלים, התחלתי למכור עוגות עוד בצעירותי תמיד היה לי אהבה ותשוקה לתחום 
+    </p>
+    <p>
+        העוגות באתר זה המתכונים הכי טובים שהגעתי אלייהם אחרי שנים של שיפורים ועכשיו הזמן שלכם להנות
+    </p>
+    <p>
+        אשמח שתדרגו את החוויה שלכם עם המוצרים שלי
+    </p>
+    <br><br>
+    <video width="400" controls>
+        <source src="./images/cakeVideo.mp4" type="video/mp4">
+        <source src="./images/cakeVideo.ogg" type="video/ogg">
+        Your browser does not support HTML video.
+      </video>
+  </header>
+
+  <div class="container">
+    <h3 style="text-align: center;">
+        למתלבטים מביינכם הנה דירוג הרוכשים עם העוגות הנמכרות ביותר
+    </h3>
+    <div id="chartContainer"></div>
+
+    <h3 style="text-align: center;">
+        דרגו את האתר כדי שנוכל לתת לכם את החוויה הטובה ביותר
+    </h3>
+    <div class="container mt-5" id="grpah">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="rating-container" id="ratingForm">
+              <h2>Rate our service:</h2>
+              <div class="rating-stars">
+                <input type="radio" id="star5" name="rating" value="5">
+                <label for="star5">&#9733;</label>
+                <input type="radio" id="star4" name="rating" value="4">
+                <label for="star4">&#9733;</label>
+                <input type="radio" id="star3" name="rating" value="3">
+                <label for="star3">&#9733;</label>
+                <input type="radio" id="star2" name="rating" value="2">
+                <label for="star2">&#9733;</label>
+                <input type="radio" id="star1" name="rating" value="1">
+                <label for="star1">&#9733;</label>
+              </div>
+              <button id="submitRating" class="submit-btn">Submit</button>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="graph-container">
+              <h2>User Ratings Graph</h2>
+              <canvas id="ratingGraph"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    <div class="row">
+        <div class="col-8">
+            <br>
+            <div id="map"></div>
+        </div>
+        <div class="col-4">
+            <br><br><br><br><br><br><br><br>
+            <h2>Contact Information:</h2>
+            <p>
+            Phone: 054-5383-645<br>
+            Email: koby0304@gmail.com<br>
+            Address: Machseya-22, Beit-shemesh, Israel (ראו במפה)<br>
+            </p>
+        </div>
+    </div>
+  </div>
+  <footer class="bg-dark text-white text-center py-3">
+    <p>&copy; 2023 Cake Shop. All rights reserved.</p>
+  </footer>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+  <script type="text/javascript" src="https://www.bing.com/api/maps/mapcontrol?key=AhuAvbW8ppZgT9hfM2KQXyKL1zTrOJFUy7n3vcH2U3NE6ViLkhXxlqfGCOCH9UNR&callback=initMap" async defer></script>
+  <script src="contact.js"></script>
+</body>
+</html>
